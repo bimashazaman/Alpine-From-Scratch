@@ -1,14 +1,15 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- include alpine -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- include tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
 
 </head>
 
@@ -70,7 +71,7 @@
             }
         }">
             <input x-model="search" placeholder="Search..." class="rounded p-2 outline-none">
-    
+
             <ul>
                 <template x-for="item in filteredItems" :key="item">
                     <li x-text="item"></li>
@@ -84,14 +85,27 @@
 
 
     <!-- Sometimes you may want to use Alpine functionality, but don't need any reactive data. In these cases, you can opt out of passing an expression to x-data entirely. For example: -->
-   <center>
-    <button class="bg-slate-200 hover:bg-slate-900 hover:text-white mt-2 border rounded p-2 " x-data @click="alert('I\'ve been clicked!')">Click Me</button>
-   </center>
+    <center>
+        <button class="bg-slate-200 hover:bg-slate-900 hover:text-white mt-2 border rounded p-2 " x-data
+            @click="alert('I\'ve been clicked!')">Click Me</button>
+    </center>
 
 
-   <center>
-    
-   </center>
+    <center>
+        <div x-data="{ open: false }">
+            <button @click="open = ! open" class="border-2 mt-4 p-2 bg-pink-500 border-pink-300">Expands</button>
+
+            <div x-show="open" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-90"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-90">
+                With Transition
+            </div>
+        </div>
+    </center>
+    <!-- With Transition -->
 
 
     </div>
