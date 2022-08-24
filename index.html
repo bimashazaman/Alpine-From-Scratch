@@ -1,0 +1,33 @@
+<html>
+
+<head>
+
+    <!-- include alpine -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- include tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <!-- {{-- that I am all set up to play around, let's look at three practical examples as a foundation for teaching me the basics of Alpine. By the end of this exercise, I should be more than equipped to start building stuff on my own. Let's goooooo.  --}} -->
+    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+
+    <hr>
+    <br>
+    <!-- Let's start with a simple "counter" component to demonstrate the basics of state and event listening in Alpine, two core features. -->
+    <div x-data="{count:0}">
+        <button x-on:click="count++"
+            class="m-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            +
+        </button>
+        <span x-text="count" class="border-2 p-2 rounded border-gray-300"></span>
+        <button x-on:click="count--"
+            class="m-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            -
+        </button>
+    </div>
+</body>
+
+</html>
