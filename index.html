@@ -199,7 +199,17 @@
                 <span x-text="message">
             </div>
         </div>
+    </center>
 
+    <br>
+    <center>
+        <div x-data="{ message: '' }">
+            <input type="text" placeholder="Likho" x-model="message" class="border-none outline-none rounded-md p-2">
+         
+           <div>
+            <button class="p-2 bg-blue-700 text-white mt-2 rounded-full" x-on:click="message = 'Stay Away'">Change Message</button>
+           </div>
+        </div>
     </center>
 
 </body>
