@@ -105,11 +105,11 @@
     <!-- x-data defines a chunk of HTML as an Alpine component and provides the reactive data for that component to reference. -->
 
     <center>
-        <div x-data="{ open:false }">
+        <div x-data="{ open : false }">
             <button @click="open = ! open" class="p-2 border border-green-600 shadow-2xl bg-green-300">
                 Open it
             </button>
-            <div x-show="open" class="">
+            <div x-show="open" x-transition x-on:durationchange="500">
                 Bimasha is a niceeeeeee girls to talk
             </div>
         </div>
@@ -160,20 +160,47 @@
 
     Let's refactor our component to use a getter called isOpen instead of accessing open directly. -->
 
-        <center>
-            <div x-data="{
+    <center>
+        <div x-data="{
                 open: false,
                 get isOpen() { return this.open },
                 toggle() { this.open = ! this.open },
               }">
-                  <button @click="toggle()" class="p-2 border border-green-600 shadow-2xl bg-pink-200">Getter</button>
-               
-                  <div x-show="isOpen">
-                      Content...
-                  </div>
-              </div>
-        </center>
+            <button @click="toggle()" class="p-2 border border-green-600 shadow-2xl bg-pink-200">Getter</button>
 
+            <div x-show="isOpen">
+                Content...
+            </div>
+        </div>
+    </center>
+
+    <!-- x-init
+    The x-init directive allows you to hook into the initialization phase of any element in Alpine. -->
+
+    <div x-init="console.log('I\'m being initialized!')"></div>
+
+    <!-- x-bind
+    x-bind allows you to set HTML attributes on elements based on the result of JavaScript expressions.
+
+    For example, here's a component where we will use x-bind to set the placeholder value of an input. -->
+    <br>
+    <center>
+        <div x-data="{ x: 'Type here...' }">
+            <input type="text" x-bind:placeholder="x" class="border-none outline-none rounded-md p-2">
+        </div>
+    </center>
+
+    <br>
+    <center>
+        <div x-data="{ message: '' }">
+            <input placeholder="Type" type="text" x-model="message" class="border-none outline-none rounded-md p-2">
+
+            <div>
+                <span x-text="message">
+            </div>
+        </div>
+
+    </center>
 
 </body>
 
