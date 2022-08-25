@@ -98,8 +98,8 @@
         </div>
     </center>
     <!-- With Transition -->
-    
 
+    <br>
     <!-- x-data -->
 
     <!-- x-data defines a chunk of HTML as an Alpine component and provides the reactive data for that component to reference. -->
@@ -114,6 +114,66 @@
             </div>
         </div>
     </center>
+
+    <!-- Scope -->
+    <!-- Properties defined in an x-data directive are available to all element children. Even ones inside other, nested x-data components. -->
+    <br>
+    <center>
+        <div x-data="{ foo: 'First X-data' }">
+            <span x-text="foo">
+                <!-- Will output: "bar" -->
+            </span>
+
+            <div x-data="{ bar: 'sencond' }">
+                <span x-text="foo">
+                    <!-- Will output: "bar" -->
+                </span>
+
+                <div x-data="{ foo: 'Third' }">
+                    <span x-text="foo">
+                        <!-- Will output: "bob" -->
+                    </span>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    <!-- Methods -->
+
+    <!-- Because x-data is evaluated as a normal JavaScript object, in addition to state, you can store methods and even getters. -->
+
+    <br>
+    <center>
+        <div x-data="{ open: false, toggle() { this.open = ! this.open } }">
+            <button @click="toggle()" class="p-2 border border-green-600 shadow-2xl bg-green-200">Method</button>
+            <div x-show="open">
+                Content...
+            </div>
+        </div>
+    </center>
+    <br>
+
+    <!-- Getters
+    JavaScript getters are handy when the sole purpose of a method is to return data based on other state.
+
+    Think of them like "computed properties" (although, they are not cached like Vue's computed properties).
+
+    Let's refactor our component to use a getter called isOpen instead of accessing open directly. -->
+
+        <center>
+            <div x-data="{
+                open: false,
+                get isOpen() { return this.open },
+                toggle() { this.open = ! this.open },
+              }">
+                  <button @click="toggle()" class="p-2 border border-green-600 shadow-2xl bg-pink-200">Getter</button>
+               
+                  <div x-show="isOpen">
+                      Content...
+                  </div>
+              </div>
+        </center>
+
 
 </body>
 
