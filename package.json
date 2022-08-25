@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "@alpinejs/mask": "^3.10.3"
   }
 }

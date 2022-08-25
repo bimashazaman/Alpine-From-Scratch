@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- include alpine -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     <!-- include tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -239,6 +240,11 @@
     <center>
         <button @click="$el.innerHTML = 'Hello World!'" class="border border-black bg-gray-900 text-gray-200 rounded-lg p-1">Replace me
             with "Hello World!"</button>
+    </center>
+
+    <br>
+    <center>
+        <input x-mask="99/99/9999" placeholder="MM/DD/YYYY">
     </center>
 
 </body>
